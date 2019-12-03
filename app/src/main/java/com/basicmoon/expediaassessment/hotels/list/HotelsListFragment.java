@@ -6,17 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.basicmoon.expediaassessment.R;
-
-import java.util.List;
-
 import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.databinding.FragmentHotelsListBinding;
 import com.basicmoon.expediaassessment.hotels.HotelsViewModel;
 import com.basicmoon.expediaassessment.hotels.MapsActivity;
+
+import java.util.List;
 
 public class HotelsListFragment extends Fragment {
 
@@ -52,7 +52,6 @@ public class HotelsListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_hotels_list, container, false);
         mFragmentHotelsListBinding = FragmentHotelsListBinding.bind(view);
@@ -66,8 +65,18 @@ public class HotelsListFragment extends Fragment {
         mFragmentHotelsListBinding.setViewmodel(mHotelsViewModel);
         mFragmentHotelsListBinding.setLifecycleOwner(getActivity());
 
+
+        mHotelsViewModel.getHotelsListLiveData().observe(getActivity(), new Observer<List<Hotel>>() {
+            @Override
+            public void onChanged(List<Hotel> hotels) {
+                mRecyclerView.setAdapter(mHotelsListRecyclerviewAdapter);
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
+            }
+        });
+
         return mFragmentHotelsListBinding.getRoot();
     }
+
 
 
 }
