@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ExpediaAssessment</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="toggle_lable_map">Maps</string>
+    <string name="toggle_lable_list">List</string>
+
+
+
+</resources>

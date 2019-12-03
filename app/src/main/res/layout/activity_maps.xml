@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/include_toolbar"
+        tools:layout_editor_absoluteX="-49dp"
+        tools:layout_editor_absoluteY="-49dp" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+        android:id="@+id/view_button_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:buttonMode="radio"
+        app:layout_constraintBottom_toBottomOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintVertical_bias="0.9"
+        app:checkedButton="@id/list_button">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/list_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/toggle_lable_list" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/maps_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/toggle_lable_map"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
