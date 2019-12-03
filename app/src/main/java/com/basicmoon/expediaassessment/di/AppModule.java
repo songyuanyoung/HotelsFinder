@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.basicmoon.expediaassessment.BuildConfig;
 import com.basicmoon.expediaassessment.data.HotelsRepository;
+import com.basicmoon.expediaassessment.utils.LocationService;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -59,6 +60,12 @@ public abstract class AppModule {
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
         }
         return httpLoggingInterceptor;
+    }
+
+    @Singleton
+    @Provides
+    static LocationService providesLocationService() {
+        return new LocationService();
     }
 
 

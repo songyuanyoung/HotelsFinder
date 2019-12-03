@@ -1,7 +1,5 @@
 package com.basicmoon.expediaassessment.hotels;
 
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -11,8 +9,6 @@ import com.basicmoon.expediaassessment.hotels.list.SortType;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import timber.log.Timber;
 
 public class HotelsViewModel extends ViewModel {
 
@@ -82,7 +78,4 @@ public class HotelsViewModel extends ViewModel {
 
     }
 
-    public void loadData() {
-
-    }
 }

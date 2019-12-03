@@ -10,7 +10,6 @@ import com.basicmoon.expediaassessment.data.model.Hotel;
 @Database(entities = {Hotel.class}, version = 1, exportSchema = false)
 public abstract class HotelDatabase extends RoomDatabase {
 
-
     public abstract HotelDao mHotelDao();
 
 }

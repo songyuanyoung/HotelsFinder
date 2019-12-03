@@ -1,5 +1,6 @@
 package com.basicmoon.expediaassessment.hotels;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import com.basicmoon.expediaassessment.hotels.list.HotelsListFragment;
 import com.basicmoon.expediaassessment.hotels.list.SortType;
 import com.basicmoon.expediaassessment.hotels.map.HotelsMapsFragment;
 import com.basicmoon.expediaassessment.utils.ActivityUtils;
+import com.basicmoon.expediaassessment.utils.LocationService;
 import com.basicmoon.expediaassessment.utils.ViewModelFactory;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
@@ -34,6 +36,7 @@ public class MapsActivity extends DaggerAppCompatActivity implements  HotelDataS
 
 
     private List<Hotel> mHotelList;
+
 
 
     @Inject
@@ -90,6 +93,7 @@ public class MapsActivity extends DaggerAppCompatActivity implements  HotelDataS
         mHotelsRepository.getHotels(this);
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -157,6 +161,7 @@ public class MapsActivity extends DaggerAppCompatActivity implements  HotelDataS
 
         return ViewModelProviders.of(activity, factory).get(HotelsViewModel.class);
     }
+
 
 
 }

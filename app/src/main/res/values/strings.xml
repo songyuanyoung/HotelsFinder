@@ -11,4 +11,7 @@
     <string name="str_sort_by_name">Sort by name</string>
     <string name="str_sort_by_rate">Sort by rate</string>
 
+    <string name="str_request_Location_permission">This app needs access to your location to discover the best hotels near you.</string>
+
+
 </resources>

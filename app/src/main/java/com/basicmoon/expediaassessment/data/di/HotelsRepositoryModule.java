@@ -27,9 +27,6 @@ public class HotelsRepositoryModule {
 
     private static final int THREAD_COUNT = 3;
 
-
-
-
     @Singleton
     @Provides
     @Local
