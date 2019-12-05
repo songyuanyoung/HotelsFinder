@@ -1,4 +1,4 @@
-package com.basicmoon.expediaassessment.hotels;
+package com.basicmoon.expediaassessment.hotels.data;
 
 import com.basicmoon.expediaassessment.data.model.HotelsResponse;
 import io.reactivex.Observable;

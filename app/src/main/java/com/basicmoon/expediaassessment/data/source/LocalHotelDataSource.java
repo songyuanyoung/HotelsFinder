@@ -11,6 +11,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * a local data source
+ * Fetch data from local database
+ */
 @Singleton
 public class LocalHotelDataSource implements HotelDataSource {
 
@@ -58,9 +62,9 @@ public class LocalHotelDataSource implements HotelDataSource {
                     @Override
                     public void run() {
                         if (hotel == null) {
-                            findHotelByNameCallback.onHotelNotFoundByname();
+                            findHotelByNameCallback.onHotelNotFoundByName();
                         } else {
-                            findHotelByNameCallback.onHotelFoundByname(hotel);
+                            findHotelByNameCallback.onHotelFoundByName(hotel);
                         }
                     }
                 });

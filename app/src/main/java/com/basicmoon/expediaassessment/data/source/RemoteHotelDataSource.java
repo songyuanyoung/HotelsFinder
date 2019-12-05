@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.data.model.HotelsResponse;
-import com.basicmoon.expediaassessment.hotels.HotelsService;
+import com.basicmoon.expediaassessment.hotels.data.HotelsService;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -15,6 +15,11 @@ import io.reactivex.subscribers.DefaultSubscriber;
 import retrofit2.Retrofit;
 import timber.log.Timber;
 
+/**
+ * A remote data souce
+ * that fetches date from service using Retrofit
+ *
+ */
 @Singleton
 public class RemoteHotelDataSource implements HotelDataSource {
 

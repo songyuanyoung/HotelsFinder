@@ -14,6 +14,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ActivityUtils {
 
+    /**
+     * Add a fragment in an activity.
+     * @param fragmentManager
+     * @param fragment
+     * @param frameId
+     */
     public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
                                               @NonNull Fragment fragment, int frameId) {
         checkNotNull(fragmentManager);
@@ -23,6 +29,12 @@ public class ActivityUtils {
         transaction.commit();
     }
 
+    /**
+     * Get rating strings according to rating number.
+     * @param context
+     * @param rating
+     * @return
+     */
     public static String getRatingStringFromRating(Context context, Double rating) {
         if (rating >= 4.0f) {
             return String.format(context.getString(R.string.str_rating_excellent), rating);

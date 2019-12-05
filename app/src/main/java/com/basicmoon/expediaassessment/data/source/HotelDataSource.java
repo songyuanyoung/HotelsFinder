@@ -6,6 +6,11 @@ import com.basicmoon.expediaassessment.data.model.Hotel;
 
 import java.util.List;
 
+
+/**
+ * an interface that defines a set of operations
+ * on data
+ */
 public interface HotelDataSource {
 
     interface LoadHotelsCallback {
@@ -17,9 +22,9 @@ public interface HotelDataSource {
 
     interface FindHotelByNameCallback {
 
-        void onHotelFoundByname(Hotel hotel);
+        void onHotelFoundByName(Hotel hotel);
 
-        void onHotelNotFoundByname();
+        void onHotelNotFoundByName();
     }
 
     void getHotels(@NonNull LoadHotelsCallback loadHotelsCallback);

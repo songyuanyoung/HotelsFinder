@@ -11,6 +11,7 @@
         android:id="@+id/splash_imageview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        android:src="@drawable/splash_image"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

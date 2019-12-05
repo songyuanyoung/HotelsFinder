@@ -14,10 +14,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class LocationService {
 
 
-
     private OnGetLocationListener onGetLocationListener;
 
-    // bunch of location related apis
     private FusedLocationProviderClient mFusedLocationClient;
 
     private Context context;

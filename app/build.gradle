@@ -23,11 +23,17 @@ android {
     buildTypes {
 
         def BASE_URL = "BASE_URL"
+        def appName = "HotelFinder"
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", BASE_URL, '"https://s3.amazonaws.com/istreet-assets/iOv-OwCSNWU4USmUmrDBCg/"'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
 
+                    outputFileName = appName +"-${variant.versionName}.apk"
+                }
+            }
         }
 
         release {
@@ -36,6 +42,8 @@ android {
             buildConfigField "String", BASE_URL, '"https://s3.amazonaws.com/istreet-assets/iOv-OwCSNWU4USmUmrDBCg/hotel_search_results.json"'
 
         }
+
+
     }
 
     dataBinding {
@@ -91,7 +99,6 @@ dependencies {
 
     //Google play service
     implementation 'com.google.maps.android:android-maps-utils:0.5'
-
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation('com.crashlytics.sdk.android:crashlytics:2.10.1@aar') {
@@ -105,19 +112,15 @@ dependencies {
     compileOnly "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
-    //Glide
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
-
     //Room database
     implementation 'androidx.room:room-runtime:2.2.2'
     annotationProcessor 'androidx.room:room-compiler:2.2.2'
 
     implementation 'com.beardedhen:androidbootstrap:2.3.2'
-
     implementation 'pub.devrel:easypermissions:3.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
-
+    //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
 

@@ -19,7 +19,6 @@ import com.basicmoon.expediaassessment.data.HotelsRepository;
 import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.data.source.HotelDataSource;
 import com.basicmoon.expediaassessment.details.HotelDetailsActivity;
-import com.basicmoon.expediaassessment.details.HotelDetailsFragment;
 import com.basicmoon.expediaassessment.hotels.list.HotelsListFragment;
 import com.basicmoon.expediaassessment.hotels.list.SortType;
 import com.basicmoon.expediaassessment.hotels.map.HotelsMapsFragment;
@@ -37,7 +36,7 @@ import javax.inject.Inject;
 import dagger.android.support.DaggerAppCompatActivity;
 import timber.log.Timber;
 
-public class MapsActivity extends DaggerAppCompatActivity implements  HotelDataSource.LoadHotelsCallback {
+public class HotelsMainActivity extends DaggerAppCompatActivity implements  HotelDataSource.LoadHotelsCallback {
 
 
     private List<Hotel> mHotelList;
@@ -110,7 +109,7 @@ public class MapsActivity extends DaggerAppCompatActivity implements  HotelDataS
 
     private void openHotelDetails(Event<String> hotelName) {
 
-        Intent intent = new Intent(MapsActivity.this, HotelDetailsActivity.class);
+        Intent intent = new Intent(HotelsMainActivity.this, HotelDetailsActivity.class);
         intent.putExtra(Const.BUNDLE_HOTEL_NAME, hotelName.getEventContent());
         startActivity(intent);
 

@@ -27,6 +27,9 @@ import javax.inject.Inject;
 import dagger.android.support.DaggerAppCompatActivity;
 import timber.log.Timber;
 
+/**
+ * Hosting activity for hotel details.
+ */
 public class HotelDetailsActivity extends DaggerAppCompatActivity implements HotelDataSource.FindHotelByNameCallback {
 
     private String mHotelname;
@@ -66,6 +69,10 @@ public class HotelDetailsActivity extends DaggerAppCompatActivity implements Hot
 
     }
 
+    /**
+     * Setting up back button.
+     * @return
+     */
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -73,7 +80,7 @@ public class HotelDetailsActivity extends DaggerAppCompatActivity implements Hot
     }
 
     @Override
-    public void onHotelFoundByname(Hotel hotel) {
+    public void onHotelFoundByName(Hotel hotel) {
         Timber.d(hotel.toString());
         Picasso.get().load(hotel.getHotelImageURL()).into(mImageView);
 
@@ -81,8 +88,8 @@ public class HotelDetailsActivity extends DaggerAppCompatActivity implements Hot
     }
 
     @Override
-    public void onHotelNotFoundByname() {
-        Timber.d("onHotelNotFoundByname");
+    public void onHotelNotFoundByName() {
+        Timber.d("onHotelNotFoundByName");
 
         Toast.makeText(this, getText(R.string.str_error_message), Toast.LENGTH_LONG).show();
     }

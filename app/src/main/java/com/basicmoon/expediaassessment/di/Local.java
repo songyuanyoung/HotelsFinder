@@ -6,6 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 
 import javax.inject.Qualifier;
 
+/**
+ * A qualifier for local data source
+ */
 @Qualifier
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

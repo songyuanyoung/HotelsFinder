@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.basicmoon.expediaassessment.R;
 import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.databinding.FragmentHotelsListBinding;
+import com.basicmoon.expediaassessment.hotels.HotelsMainActivity;
 import com.basicmoon.expediaassessment.hotels.HotelsViewModel;
-import com.basicmoon.expediaassessment.hotels.MapsActivity;
 import com.basicmoon.expediaassessment.hotels.OnOpenHotelDetailsListener;
 
 import java.util.List;
@@ -62,11 +62,10 @@ public class HotelsListFragment extends Fragment implements OnOpenHotelDetailsLi
         mRecyclerView.setAdapter(mHotelsListRecyclerviewAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
 
-        mHotelsViewModel = MapsActivity.obtainViewModel(getActivity());
+        mHotelsViewModel = HotelsMainActivity.obtainViewModel(getActivity());
 
         mFragmentHotelsListBinding.setViewmodel(mHotelsViewModel);
         mFragmentHotelsListBinding.setLifecycleOwner(getActivity());
-
 
         mHotelsViewModel.getHotelsListLiveData().observe(getActivity(), new Observer<List<Hotel>>() {
             @Override

@@ -13,7 +13,7 @@ import com.basicmoon.expediaassessment.R;
 import com.basicmoon.expediaassessment.data.HotelsRepository;
 import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.data.source.HotelDataSource;
-import com.basicmoon.expediaassessment.hotels.MapsActivity;
+import com.basicmoon.expediaassessment.hotels.HotelsMainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -73,7 +73,7 @@ public class SplashActivity extends DaggerAppCompatActivity implements HotelData
     @Override
     public void onHotelsLoaded(List<Hotel> hotels) {
 
-        Intent intent = new Intent(SplashActivity.this, MapsActivity.class);
+        Intent intent = new Intent(SplashActivity.this, HotelsMainActivity.class);
         startActivity(intent);
         finish();
     }

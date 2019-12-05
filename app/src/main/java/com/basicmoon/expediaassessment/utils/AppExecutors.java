@@ -7,6 +7,10 @@ import java.util.concurrent.Executor;
 
 import javax.inject.Singleton;
 
+/**
+ * Executors to manipulate data in database
+ * so it doesn't block UI thread
+ */
 @Singleton
 public class AppExecutors {
 

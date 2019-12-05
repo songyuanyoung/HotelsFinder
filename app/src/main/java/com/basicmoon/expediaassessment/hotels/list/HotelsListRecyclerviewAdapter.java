@@ -97,9 +97,6 @@ public class HotelsListRecyclerviewAdapter extends RecyclerView.Adapter<HotelsLi
         }
         holder.mHotelItemRatingTextView.setText(ActivityUtils.getRatingStringFromRating(mContext, hotel.getGuestRating()));
 
-
-
-
         holder.mHotelItemPriceTextView.setText(hotel.getPrice());
 
         if (TextUtils.isEmpty(hotel.getDiscountMessage())) holder.mHotelItemDiscountTextView.setVisibility(View.INVISIBLE);

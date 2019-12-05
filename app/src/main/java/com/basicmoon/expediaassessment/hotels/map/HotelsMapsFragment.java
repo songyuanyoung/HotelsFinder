@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment;
 import com.basicmoon.expediaassessment.R;
 import com.basicmoon.expediaassessment.data.HotelsRepository;
 import com.basicmoon.expediaassessment.data.model.Hotel;
+import com.basicmoon.expediaassessment.hotels.HotelsMainActivity;
 import com.basicmoon.expediaassessment.hotels.HotelsViewModel;
-import com.basicmoon.expediaassessment.hotels.MapsActivity;
 import com.basicmoon.expediaassessment.utils.LocationService;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -88,7 +88,7 @@ public class HotelsMapsFragment extends DaggerFragment implements OnMapReadyCall
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        mHotelsViewModel = MapsActivity.obtainViewModel(getActivity());
+        mHotelsViewModel = HotelsMainActivity.obtainViewModel(getActivity());
 
         return view;
     }
@@ -97,6 +97,7 @@ public class HotelsMapsFragment extends DaggerFragment implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //Set up maps style for google maps
         try {
             // Customise the styling of the base map using a JSON object defined
             // in a raw resource file.
@@ -112,10 +113,9 @@ public class HotelsMapsFragment extends DaggerFragment implements OnMapReadyCall
         }
 
         mLocationService.startLocationUpdates();
+
         mMap.setMyLocationEnabled(true);
-
         mMap.setOnInfoWindowClickListener(this);
-
 
         if (mCurrentLocation != null) {
             LatLng currentLocationLatLng = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
@@ -126,18 +126,9 @@ public class HotelsMapsFragment extends DaggerFragment implements OnMapReadyCall
 
         List<Hotel> hotelList = mHotelsViewModel.getHotelsListLiveData().getValue();
 
-
         for (Hotel hotel : hotelList) {
-
             LatLng latLng = new LatLng(hotel.getLatitude(), hotel.getLongitude());
-            if (getActivity() != null && getActivity().getResources() != null) {
-                mMap.addMarker(new MarkerOptions().position(latLng).title(hotel.getHotelName()).icon(getMarkerIcon("#2196F3")));
-
-            } else {
-                mMap.addMarker(new MarkerOptions().position(latLng).title(hotel.getHotelName()));
-
-            }
-
+            mMap.addMarker(new MarkerOptions().position(latLng).title(hotel.getHotelName()).icon(getMarkerIcon("#2196F3")));
         }
 
     }

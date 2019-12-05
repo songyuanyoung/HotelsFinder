@@ -16,6 +16,12 @@ import javax.inject.Singleton;
 import retrofit2.Retrofit;
 import timber.log.Timber;
 
+/**
+ * Data repository
+ * This class is in charge of fetching data, save data and/delete data from remote server and/or local database,
+ * and provides data to viewmodel
+ * In this wey, the other layers don't need to know where the data is from.
+ */
 @Singleton
 public class HotelsRepository implements HotelDataSource {
 
@@ -52,13 +58,13 @@ public class HotelsRepository implements HotelDataSource {
     public void findHotelByName(@NonNull String hotelName, @NonNull FindHotelByNameCallback findHotelByNameCallback) {
         mLocalHotelDataSource.findHotelByName(hotelName, new FindHotelByNameCallback() {
             @Override
-            public void onHotelFoundByname(Hotel hotel) {
-                findHotelByNameCallback.onHotelFoundByname(hotel);
+            public void onHotelFoundByName(Hotel hotel) {
+                findHotelByNameCallback.onHotelFoundByName(hotel);
             }
 
             @Override
-            public void onHotelNotFoundByname() {
-                findHotelByNameCallback.onHotelNotFoundByname();
+            public void onHotelNotFoundByName() {
+                findHotelByNameCallback.onHotelNotFoundByName();
             }
         });
     }
