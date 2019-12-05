@@ -40,4 +40,7 @@ BootStrap   
   
   ### Hotel Details
   
+  If the image URL is broke, show a default image for the hotel, otherwise show the hotel image.
 ![](screenshots/Screenshot_4.png) ![](screenshots/Screenshot_5.png)
+  
+![](screenshots/Screenshot_7.png)
