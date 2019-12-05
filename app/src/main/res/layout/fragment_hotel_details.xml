@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.basicmoon.expediaassessment.details.HotelDetailsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+        <TextView
+            android:id="@+id/hotel_detail_price_textView"
+            style="@style/LatoBlackTextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="@{viewModel.hotelMutableLiveData.price}"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/hotel_detail_discount_textView"
+            style="@style/LatoRegularTextDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:clickable="false"
+            android:text="@{viewModel.hotelMutableLiveData.discountMessage}"
+            android:visibility="@{viewModel.isDiscountMessageEmpty ? View.INVISIBLE : View.VISIBLE}"
+            android:textColor="@color/white"
+            app:chipBackgroundColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/hotel_detail_price_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/hotel_detail_price_textView"
+            app:layout_constraintTop_toTopOf="@+id/hotel_detail_price_textView" />
+
+        <TextView
+            android:id="@+id/hotel_detail_rating_textView"
+            style="@style/LatoRegularTextDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.ratingMutableLiveData}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hotel_detail_price_textView" />
+
+        <TextView
+            android:id="@+id/hotel_detail_description_textview"
+            style="@style/LatoRegularTextDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{viewModel.hotelMutableLiveData.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hotel_detail_rating_textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

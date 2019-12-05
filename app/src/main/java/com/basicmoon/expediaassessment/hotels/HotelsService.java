@@ -9,5 +9,4 @@ public interface HotelsService {
     @GET("hotel_search_results.json")
     Observable<HotelsResponse> getNearByBikes();
 
-
 }

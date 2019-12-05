@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ExpediaAssessment</string>
+    <string name="app_name">Hotel Finder</string>
     <string name="title_activity_maps">Map</string>
 
     <string name="toggle_lable_map">Maps</string>
@@ -13,5 +13,17 @@
 
     <string name="str_request_Location_permission">This app needs access to your location to discover the best hotels near you.</string>
 
+    <string name="str_rating_excellent">%1$.1f/5 - Excellent!</string>
+    <string name="str_rating_very_good">%1$.1f/5 - Very Good!</string>
+    <string name="str_rating_fair">%1$.1f/5 - Fair!</string>
+    <string name="str_rating_poor">%1$.1f/5 - Don\'t try!!</string>
+    <string name="title_activity_hotel_details">HotelDetailsActivity</string>
+
+
+
+    <string name="str_book_a_room">Book A Room</string>
+    <string name="str_per_night_per_room">per night, per room</string>
+
+    <string name="str_error_message">Unable to get hotels data, please try later. </string>
 
 </resources>

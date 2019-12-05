@@ -12,5 +12,4 @@ public abstract class HotelsModule {
     @ContributesAndroidInjector
     abstract HotelsMapsFragment bindsHotelMapFragment();
 
-
 }

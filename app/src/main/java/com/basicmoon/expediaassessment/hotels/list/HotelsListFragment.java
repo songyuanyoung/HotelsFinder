@@ -15,10 +15,11 @@ import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.databinding.FragmentHotelsListBinding;
 import com.basicmoon.expediaassessment.hotels.HotelsViewModel;
 import com.basicmoon.expediaassessment.hotels.MapsActivity;
+import com.basicmoon.expediaassessment.hotels.OnOpenHotelDetailsListener;
 
 import java.util.List;
 
-public class HotelsListFragment extends Fragment {
+public class HotelsListFragment extends Fragment implements OnOpenHotelDetailsListener {
 
     private List<Hotel> mHotelList;
 
@@ -35,6 +36,7 @@ public class HotelsListFragment extends Fragment {
         mHotelList = hotelList;
 
         mHotelsListRecyclerviewAdapter = new HotelsListRecyclerviewAdapter(mHotelList);
+        mHotelsListRecyclerviewAdapter.setOnOpenHotelDetailsListener(this);
     }
 
 
@@ -78,5 +80,8 @@ public class HotelsListFragment extends Fragment {
     }
 
 
-
+    @Override
+    public void onOpenHotelDetails(String hotelName) {
+        mHotelsViewModel.openHotelDetails(hotelName);
+    }
 }

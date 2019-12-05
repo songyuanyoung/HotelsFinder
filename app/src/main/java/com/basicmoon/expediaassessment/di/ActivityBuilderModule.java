@@ -1,5 +1,6 @@
 package com.basicmoon.expediaassessment.di;
 
+import com.basicmoon.expediaassessment.details.HotelDetailsActivity;
 import com.basicmoon.expediaassessment.hotels.HotelsModule;
 import com.basicmoon.expediaassessment.hotels.MapsActivity;
 import com.basicmoon.expediaassessment.splash.SplashActivity;
@@ -11,10 +12,16 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class ActivityBuilderModule {
 
 
+    @ActivityScoped
     @ContributesAndroidInjector
     abstract SplashActivity bindsSplashActivity();
 
+    @ActivityScoped
     @ContributesAndroidInjector(modules = HotelsModule.class)
     abstract MapsActivity bindsMapsActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract HotelDetailsActivity bindsHotelDetailsActivity();
 
 }

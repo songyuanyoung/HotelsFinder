@@ -49,6 +49,28 @@ public class LocalHotelDataSource implements HotelDataSource {
     }
 
     @Override
+    public void findHotelByName(@NonNull String hotelName, @NonNull FindHotelByNameCallback findHotelByNameCallback) {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                final Hotel hotel = mHotelDao.findHotelByName(hotelName);
+                mAppExecutors.getMainThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (hotel == null) {
+                            findHotelByNameCallback.onHotelNotFoundByname();
+                        } else {
+                            findHotelByNameCallback.onHotelFoundByname(hotel);
+                        }
+                    }
+                });
+            }
+        };
+
+        mAppExecutors.getIoExecutor().execute(runnable);
+    }
+
+    @Override
     public void addHotel(Hotel hotel) {
         Runnable runnable = new Runnable() {
             @Override

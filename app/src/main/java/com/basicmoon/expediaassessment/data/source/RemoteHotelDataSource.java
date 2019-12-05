@@ -1,14 +1,10 @@
 package com.basicmoon.expediaassessment.data.source;
 
-import android.content.Intent;
-
 import androidx.annotation.NonNull;
 
 import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.data.model.HotelsResponse;
 import com.basicmoon.expediaassessment.hotels.HotelsService;
-import com.basicmoon.expediaassessment.hotels.MapsActivity;
-import com.basicmoon.expediaassessment.splash.SplashActivity;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -47,6 +43,7 @@ public class RemoteHotelDataSource implements HotelDataSource {
 
                     @Override
                     public void onError(Throwable t) {
+                        Timber.d(t.getMessage());
                         loadHotelsCallback.onDataNotAvailable();
                     }
 
@@ -60,6 +57,12 @@ public class RemoteHotelDataSource implements HotelDataSource {
 
 
     }
+
+    @Override
+    public void findHotelByName(@NonNull String hotelName, @NonNull FindHotelByNameCallback findHotelByNameCallback) {
+
+    }
+
 
     @Override
     public void addHotel(Hotel hotel) {

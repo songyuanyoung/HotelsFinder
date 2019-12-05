@@ -3,7 +3,6 @@ package com.basicmoon.expediaassessment.data.db;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
-import com.basicmoon.expediaassessment.data.db.HotelDao;
 import com.basicmoon.expediaassessment.data.model.Hotel;
 
 

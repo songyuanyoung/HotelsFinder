@@ -1,26 +1,31 @@
 package com.basicmoon.expediaassessment.hotels;
 
-import android.location.Location;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.basicmoon.expediaassessment.R;
-import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.data.HotelsRepository;
+import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.data.source.HotelDataSource;
+import com.basicmoon.expediaassessment.details.HotelDetailsActivity;
+import com.basicmoon.expediaassessment.details.HotelDetailsFragment;
 import com.basicmoon.expediaassessment.hotels.list.HotelsListFragment;
 import com.basicmoon.expediaassessment.hotels.list.SortType;
 import com.basicmoon.expediaassessment.hotels.map.HotelsMapsFragment;
 import com.basicmoon.expediaassessment.utils.ActivityUtils;
-import com.basicmoon.expediaassessment.utils.LocationService;
+import com.basicmoon.expediaassessment.utils.Const;
+import com.basicmoon.expediaassessment.utils.Event;
 import com.basicmoon.expediaassessment.utils.ViewModelFactory;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
@@ -64,7 +69,6 @@ public class MapsActivity extends DaggerAppCompatActivity implements  HotelDataS
             public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked) {
                 if (isChecked) {
                     HotelsListFragment hotelsListFragment = HotelsListFragment.newInstance(mHotelList);
-
                     ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), hotelsListFragment, R.id.content);
                 }
             }
@@ -84,20 +88,37 @@ public class MapsActivity extends DaggerAppCompatActivity implements  HotelDataS
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
 
         mHotelList = new ArrayList<>();
         mHotelsViewModel = obtainViewModel(this);
 
         mHotelsRepository.getHotels(this);
 
+        mHotelsViewModel.getOpenHotelDetailsEvent().observe(this, new Observer<Event<String>>() {
+            @Override
+            public void onChanged(Event<String> hotelName) {
+                openHotelDetails(hotelName);
+            }
+        });
+
+    }
+
+    private void openHotelDetails(Event<String> hotelName) {
+
+        Intent intent = new Intent(MapsActivity.this, HotelDetailsActivity.class);
+        intent.putExtra(Const.BUNDLE_HOTEL_NAME, hotelName.getEventContent());
+        startActivity(intent);
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.sort_menu, menu);
         return true;
     }
@@ -147,12 +168,16 @@ public class MapsActivity extends DaggerAppCompatActivity implements  HotelDataS
         mHotelsViewModel.getHotelsListLiveData().setValue(hotels);
         HotelsListFragment hotelsListFragment = HotelsListFragment.newInstance(mHotelList);
 
+        Timber.d(hotels.get(0).toString());
+
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), hotelsListFragment, R.id.content);
     }
 
     @Override
     public void onDataNotAvailable() {
         Timber.d("onDataNotAvailable");
+
+        Toast.makeText(this, getText(R.string.str_error_message), Toast.LENGTH_LONG).show();
     }
 
     public static HotelsViewModel obtainViewModel(FragmentActivity activity) {

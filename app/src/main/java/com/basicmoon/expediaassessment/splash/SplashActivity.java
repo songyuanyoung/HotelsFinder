@@ -3,6 +3,9 @@ package com.basicmoon.expediaassessment.splash;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -11,6 +14,7 @@ import com.basicmoon.expediaassessment.data.HotelsRepository;
 import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.data.source.HotelDataSource;
 import com.basicmoon.expediaassessment.hotels.MapsActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -30,11 +34,18 @@ public class SplashActivity extends DaggerAppCompatActivity implements HotelData
     @Inject
     HotelsRepository mHotelsRepository;
 
+    private ImageView mImageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,
+                WindowManager.LayoutParams. FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        mImageView = (ImageView) findViewById(R.id.splash_imageview);
+
+        Picasso.get().load(R.drawable.splash_image).into(mImageView);
 
         if (hasLocationPermission()) {
             fetchHotelDataFromRemote();
@@ -71,6 +82,8 @@ public class SplashActivity extends DaggerAppCompatActivity implements HotelData
     public void onDataNotAvailable() {
 
         Timber.d("onDataNotAvailable");
+
+        Toast.makeText(this, getText(R.string.str_error_message), Toast.LENGTH_LONG).show();
     }
 
     @Override

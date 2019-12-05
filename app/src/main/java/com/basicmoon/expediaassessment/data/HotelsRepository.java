@@ -48,6 +48,21 @@ public class HotelsRepository implements HotelDataSource {
         });
     }
 
+    @Override
+    public void findHotelByName(@NonNull String hotelName, @NonNull FindHotelByNameCallback findHotelByNameCallback) {
+        mLocalHotelDataSource.findHotelByName(hotelName, new FindHotelByNameCallback() {
+            @Override
+            public void onHotelFoundByname(Hotel hotel) {
+                findHotelByNameCallback.onHotelFoundByname(hotel);
+            }
+
+            @Override
+            public void onHotelNotFoundByname() {
+                findHotelByNameCallback.onHotelNotFoundByname();
+            }
+        });
+    }
+
 
     public void getHotelsFromRemote(LoadHotelsCallback loadHotelsCallback) {
 

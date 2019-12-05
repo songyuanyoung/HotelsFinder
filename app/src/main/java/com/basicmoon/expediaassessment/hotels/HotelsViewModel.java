@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.basicmoon.expediaassessment.data.model.Hotel;
 import com.basicmoon.expediaassessment.hotels.list.SortType;
+import com.basicmoon.expediaassessment.utils.Event;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,13 +17,7 @@ public class HotelsViewModel extends ViewModel {
 
     private MutableLiveData<List<Hotel>> mHotelsListLiveData = new MutableLiveData<>();
 
-    public MutableLiveData<List<Hotel>> getHotelsListLiveData() {
-        return mHotelsListLiveData;
-    }
-
-    public void setHotelsListLiveData(MutableLiveData<List<Hotel>> hotelsListLiveData) {
-        mHotelsListLiveData = hotelsListLiveData;
-    }
+    private MutableLiveData<Event<String>> mOpenHotelDetailsEvent = new MutableLiveData<>();
 
     public void setSortType (SortType sortType) {
         mSortType = sortType;
@@ -78,4 +73,20 @@ public class HotelsViewModel extends ViewModel {
 
     }
 
+
+    public void openHotelDetails(String hotelname) {
+        mOpenHotelDetailsEvent.setValue(new Event<>(hotelname));
+    }
+
+    public MutableLiveData<Event<String>> getOpenHotelDetailsEvent() {
+        return mOpenHotelDetailsEvent;
+    }
+
+    public MutableLiveData<List<Hotel>> getHotelsListLiveData() {
+        return mHotelsListLiveData;
+    }
+
+    public void setHotelsListLiveData(MutableLiveData<List<Hotel>> hotelsListLiveData) {
+        mHotelsListLiveData = hotelsListLiveData;
+    }
 }

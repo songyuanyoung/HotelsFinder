@@ -9,8 +9,7 @@
     <include
         android:id="@+id/include"
         layout="@layout/include_toolbar"
-        tools:layout_editor_absoluteX="-49dp"
-        tools:layout_editor_absoluteY="-49dp" />
+        />
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
         android:id="@+id/view_button_group"
@@ -24,19 +23,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/include"
         app:layout_constraintVertical_bias="0.9"
+        app:bootstrapBrand="primary"
+        app:roundedCorners="true"
+        app:bootstrapSize="lg"
         app:checkedButton="@id/list_button">
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/list_button"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/toggle_lable_list" />
+            app:roundedCorners="true"
+            app:bootstrapText="@string/toggle_lable_list"
+            app:bootstrapSize="lg"
+            />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/maps_button"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/toggle_lable_map"
+            android:textSize="@dimen/text_size_tittle"
+            app:bootstrapBrand="regular"
             />
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 

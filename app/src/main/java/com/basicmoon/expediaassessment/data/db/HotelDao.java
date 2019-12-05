@@ -18,6 +18,9 @@ public interface HotelDao {
     @Query("SELECT * FROM HOTEL")
     List<Hotel> getHotels();
 
+    @Query("SELECT * FROM hotel WHERE hotelName = :hotelName")
+    Hotel findHotelByName(String hotelName);
+
     @Query("DELETE FROM hotel")
     void deleteAllHotels();
 

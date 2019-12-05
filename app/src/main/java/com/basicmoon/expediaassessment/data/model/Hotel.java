@@ -25,7 +25,7 @@ public class Hotel implements Serializable {
 
     @SerializedName("latitude")
     @Expose
-    private String latitude;
+    private Double latitude;
 
     @SerializedName("loyaltyPointsEarned")
     @Expose
@@ -41,11 +41,11 @@ public class Hotel implements Serializable {
 
     @SerializedName("guestRating")
     @Expose
-    private String guestRating;
+    private Double  guestRating;
 
     @SerializedName("longitude")
     @Expose
-    private String longitude;
+    private Double longitude;
 
     @SerializedName("hotelName")
     @Expose
