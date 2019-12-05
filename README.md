@@ -11,6 +11,10 @@ You can switch between list view mode and maps view mode.
 
 HotelFinder is using **MVVM** design pattern and implemented in Java. 
 
+![](screenshots/mvvm-architecture-app-in-android.png)
+
+The picture above is from https://androidwave.com/mvvm-architecture-app-in-android/
+
 # Libraries used in this app
 Room  
 Retrofit  
