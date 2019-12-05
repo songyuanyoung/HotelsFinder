@@ -25,3 +25,15 @@ Easy permission
   
 Material design  
 BootStrap   
+  
+  ### List View
+  
+![](screenshots/Screenshot_1.png) ![](screenshots/Screenshot_2.png)
+  
+  ### Map View
+  
+![](screenshots/Screenshot_3.png) ![](screenshots/Screenshot_6.png)
+  
+  ### Hotel Details
+  
+![](screenshots/Screenshot_4.png) ![](screenshots/Screenshot_5.png)
